@@ -43,7 +43,7 @@
 
 &msc {
     acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <40>;      // 300
+    time-to-max-speed-ms = <100>;      // 300
 };
 
 / {
@@ -106,7 +106,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <135>;
+            tapping-term-ms = <175>;
             flavor = "tap-preferred";
         };
     };
