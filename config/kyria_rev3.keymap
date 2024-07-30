@@ -16,8 +16,8 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#undef ZMK_MOUSE_DEFAULT_MOVE_VAL // 600
-#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500
+#undef ZMK_MOUSE_DEFAULT_MOVE_VAL
+#undef ZMK_MOUSE_DEFAULT_SCRL_VAL
 
 // Macros for AutoShift
 # define AS_1(keycode) &as LS(keycode) keycode
@@ -29,7 +29,22 @@
     lazy;
 };
 
-&num_word { layers = <2>; };
+&num_word { 
+    layers = <2>;
+};
+
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500  // 600
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 25    // 10
+
+&mmv {
+    acceleration-exponent = <1>;      // 1
+    time-to-max-speed-ms = <500>;     // 300
+};
+
+&msc {
+    acceleration-exponent = <1>;      // 0
+    time-to-max-speed-ms = <40>;      // 300
+};
 
 / {
     behaviors {
