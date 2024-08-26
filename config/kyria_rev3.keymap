@@ -24,7 +24,7 @@
 # define AS_2(keycode1, keycode2) &as keycode1 keycode2
 
 &sk {
-    release-after-ms = <5000>;
+    release-after-ms = <1500>;
     quick-release;
 };
 
