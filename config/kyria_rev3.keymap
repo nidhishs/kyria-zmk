@@ -86,7 +86,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "Num Layer Dance";
             #binding-cells = <0>;
-            bindings = <&mo 2>, <&num_word>;
+            bindings = <&sl 2>, <&num_word>;
         };
 
         mouse: mouse {
