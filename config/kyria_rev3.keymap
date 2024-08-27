@@ -33,6 +33,16 @@
             flavor = "balanced";
             hold-while-undecided-linger;
         };
+
+        slt: slt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Sticky Layer Tap";
+            bindings = <&kp>, <&sl>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
