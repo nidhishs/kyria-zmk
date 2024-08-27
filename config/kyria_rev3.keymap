@@ -22,6 +22,19 @@
 };
 
 / {
+    behaviors {
+        osm: osm {
+            compatible = "zmk,behavior-hold-tap";
+            label = "One Shot Mod";
+            bindings = <&kp>, <&sk>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "balanced";
+            hold-while-undecided-linger;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
