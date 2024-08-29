@@ -31,7 +31,10 @@
 };
 
 &lt {
-    flavor = "balanced";
+    flavor = "hold-preferred";
+    quick-tap-ms = <100>;
+    tapping-term-ms = <180>;
+    retro-tap; // with layer-tap activation, another key must be held.
 };
 
 &num_word { 
@@ -48,7 +51,7 @@
 
 &msc {
     acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <500>;      // 300
+    time-to-max-speed-ms = <500>;     // 300
 };
 
 / {
@@ -154,19 +157,86 @@
             key-positions = <46 47>;
         };
 
-        combo-repeat-r {
+        combo-r-repeat {
             bindings = <&key_repeat>;
-            key-positions = <19 20>;
-            timeout-ms = <55>;
+            key-positions = <28 29>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
             layers = <0>; 
         };
 
-        combo-repeat-l {
+        combo-l-repeat {
             bindings = <&key_repeat>;
-            key-positions = <15 16>;
-            timeout-ms = <55>;
+            key-positions = <35 36>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
             layers = <0>;
         };
+
+        // We add home-row mod combos since layer-tap sometimes isn't fast enough for single-mods + reduce thumb usage.
+        combo-lshift {
+            bindings = <&sk LSHFT>;
+            key-positions =  <13 14>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-lalt {
+            bindings = <&sk LALT>;
+            key-positions =  <14 15>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-lgui {
+            bindings = <&sk LALT>;
+            key-positions =  <15 16>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-lctrl {
+            bindings = <&sk LCTRL>;
+            key-positions =  <13 16>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-rctrl {
+            bindings = <&sk RCTRL>;
+            key-positions =  <19 22>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-rgui {
+            bindings = <&sk RALT>;
+            key-positions =  <19 20>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-ralt {
+            bindings = <&sk RALT>;
+            key-positions =  <20 21>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };
+
+        combo-rshift {
+            bindings = <&sk RSHFT>;
+            key-positions =  <21 22>;
+            timeout-ms = <18>;
+            require-prior-idle-ms = <30>;
+            layers = <0>;
+        };  
     };
 
     keymap {
