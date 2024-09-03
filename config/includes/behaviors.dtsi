@@ -90,3 +90,27 @@ ZMK_HOLD_TAP(as,
 #define AS_1(keycode) &as LS(keycode) keycode
 #define AS_2(keycode1, keycode2) &as keycode1 keycode2
 /* ------------- */
+
+/* Next Word */
+ZMK_MACRO(next_word,
+    bindings=<&macro_press &kp LALT>,<&macro_tap &kp RIGHT>,<&macro_release &kp LALT>;
+)
+/* ----------- */
+
+/* Previous Word */
+ZMK_MACRO(prev_word,
+    bindings=<&macro_press &kp LALT>,<&macro_tap &kp LEFT>,<&macro_release &kp LALT>;
+)
+/* ----------- */
+
+/* Screen Capture */
+ZMK_MACRO(scr_cap,
+    bindings=<&macro_press &kp LGUI &kp LSHFT>,<&macro_tap &kp N5>,<&macro_release &kp LSHFT &kp LGUI>;
+)
+/* ----------- */
+
+/* Screenshot to Clipboard */
+ZMK_MACRO(scr_shot,
+    bindings=<&macro_press &kp LGUI &kp LSHFT>,<&macro_tap &kp N4>,<&macro_release &kp LSHFT &kp LGUI>;
+)
+/* ----------- */

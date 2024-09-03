@@ -7,24 +7,33 @@
              ╰─────────────────────┴─────────────────────╯
 */
 
-#define COMBO_TERM_FAST 18
-#define COMBO_TERM_SLOW 40
 
-#define COMBO_IDLE_FAST 150
-#define COMBO_IDLE_SLOW 75
+#define COMBO_TERM_FAST 18  // For combos that are triggered by rollable key-sequences.
+#define COMBO_TERM_DEF  40  // For combos that are triggered by non-rollable / non home-row key-sequences.
+#define COMBO_TERM_SLOW 75  // For combos that are triggered by key-sequences on opposite splits.
+
+#define COMBO_IDLE_FAST 50  // For vertical combos, usually triggered by non-rollable keys.
+#define COMBO_IDLE_DEF  150 // For horizontal combos, usually triggered by rollable keys.
+#define COMBO_IDLE_SLOW 250 // For combos that are trigger layer changes or mods.
 
 /* Alphabet combos */
-ZMK_COMBO(z,        AS_1(Z),       LM0 LB0, ALP,          COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(x,        AS_1(K),       RM0 RB0, ALP,          COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// ZMK_COMBO(g, AS_1(G), LM0 LB0, ALP, COMBO_TERM_DEF, COMBO_IDLE_FAST)
+// ZMK_COMBO(y, AS_1(Y), RM0 RB0, ALP, COMBO_TERM_DEF, COMBO_IDLE_FAST)
+
+/* Media combos */
+ZMK_COMBO(play,  &kp C_PP, LM0 LB0, SYS, COMBO_TERM_DEF,  COMBO_IDLE_SLOW)
 
 /* Control combos */
-ZMK_COMBO(tab,      &kp TAB,      LB3 LB2, ALL_NO_MOUSE,  COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-ZMK_COMBO(bspc,     &kp BSPC,     RT3 RT2, ALL_NO_MOUSE,  COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-ZMK_COMBO(esc,      &kp ESC,      LT3 LT2, ALL_NO_MOUSE,  COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-ZMK_COMBO(enter,    &kp ENTER,    RB3 RB2, ALL_NO_MOUSE,  COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-ZMK_COMBO(capsword, &caps_word,   LB0 RB0, ALP,           COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(tab,      &kp TAB,     LB3 LB2, ALL_NM, COMBO_TERM_DEF,  COMBO_IDLE_SLOW)
+ZMK_COMBO(bspc,     &kp BSPC,    RT3 RT2, ALL_NM, COMBO_TERM_DEF,  COMBO_IDLE_SLOW)
+ZMK_COMBO(esc,      &kp ESC,     LT3 LT2, ALL_NM, COMBO_TERM_DEF,  COMBO_IDLE_SLOW)
+ZMK_COMBO(enter,    &kp ENTER,   RB3 RB2, ALL_NM, COMBO_TERM_DEF,  COMBO_IDLE_SLOW)
+ZMK_COMBO(capsword, &caps_word,  LB0 RB0, ALP,    COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(repeat-r, &key_repeat, RM1 RM2, ALP,    COMBO_TERM_FAST, COMBO_IDLE_SLOW)
+ZMK_COMBO(repeat-l, &key_repeat, LM1 LM2, ALP,    COMBO_TERM_FAST, COMBO_IDLE_SLOW)
+
 
 /* Layer combos */
-MOUSE_LAYER(KEYS_R THUMBS_R LM0 RM0)
-ZMK_COMBO(mouse,    &mouse,        LM0 RM0,     ALL_NO_MOUSE,  COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(num,      &num_word NUM, RB1 RB2 RB3, ALL_NO_MOUSE,  COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+// MOUSE_LAYER(KEYS_R THUMBS_R LM0 RM0)
+// ZMK_COMBO(auto-mouse, &mouse, LM0 RM0, ALL_NM, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(auto-num, &num_word NUM, RB1 RB2 RB3, ALP, COMBO_TERM_DEF, COMBO_IDLE_SLOW)
