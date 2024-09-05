@@ -52,7 +52,6 @@ the position of the key that triggers the previous window.
     )
 /* ------------- */
 
-
 /*
 Tab Swapper
 
@@ -63,20 +62,6 @@ the position of the key that triggers the previous tab.
     ZMK_TRI_STATE(tab_swap, \
         bindings=<&kt LCTRL>,<&kp TAB>,<&kt LCTRL>; \
         ignored-key-positions=<ignored_key_positions>; \
-    )
-/* ------------- */
-
-/*
-Smart Mouse Layer
-
-Call this macro before using the &mouse behavior to specify
-the position of the key that triggers the mouse layer and positions that have mouse keys.
-*/
-#define MOUSE_LAYER(ignored_key_positions) \
-    ZMK_TRI_STATE(mouse, \
-        bindings=<&tog MOUSE>,<&none>,<&tog MOUSE>; \
-        ignored-key-positions=<ignored_key_positions>; \
-        ignored-layers=<MOUSE>; \
     )
 /* ------------- */
 
@@ -124,4 +109,37 @@ ZMK_MACRO(scr_shot, bindings=<&macro_tap &kp LG(LS(N4))>;)
 ZMK_TAP_DANCE(num_dance, bindings=<&sl NUM>,<&num_word NUM>;)
 ZMK_TAP_DANCE(sys_dance, bindings=<&sl SYS>,<&tog SYS>;)
 ZMK_TAP_DANCE(copy_cut,  bindings=<&kp LG(C)>,<&kp LG(X)>;)
+/* ------------- */
+
+/*
+Smart Mouse Layer
+
+Call this macro before using the &mouse behavior to specify
+the position of the key that triggers the mouse layer and positions that have mouse keys.
+*/
+#define MOUSE_LAYER(ignored_key_positions) \
+    ZMK_TRI_STATE(mouse, \
+        bindings=<&tog MOUSE>,<&none>,<&tog MOUSE>; \
+        ignored-key-positions=<ignored_key_positions>; \
+        ignored-layers=<MOUSE>; \
+    )
+/* ------------- */
+
+/* Mouse Keys */
+ZMK_MOD_MORPH(mous_up,
+    bindings=<&mmv MOVE_UP>,<&msc MOVE_UP>;
+    mods=<(MOD_LALT|MOD_RALT)>;
+)
+ZMK_MOD_MORPH(mous_dn,
+    bindings=<&mmv MOVE_DOWN>,<&msc MOVE_DOWN>;
+    mods=<(MOD_LALT|MOD_RALT)>;
+)
+ZMK_MOD_MORPH(mous_lt,
+    bindings=<&mmv MOVE_LEFT>,<&msc MOVE_LEFT>;
+    mods=<(MOD_LALT|MOD_RALT)>;
+)
+ZMK_MOD_MORPH(mous_rt,
+    bindings=<&mmv MOVE_RIGHT>,<&msc MOVE_RIGHT>;
+    mods=<(MOD_LALT|MOD_RALT)>;
+)
 /* ------------- */
