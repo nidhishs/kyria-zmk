@@ -91,26 +91,37 @@ ZMK_HOLD_TAP(as,
 #define AS_2(keycode1, keycode2) &as keycode1 keycode2
 /* ------------- */
 
-/* Next Word */
-ZMK_MACRO(next_word,
-    bindings=<&macro_press &kp LALT>,<&macro_tap &kp RIGHT>,<&macro_release &kp LALT>;
-)
+/* Jump Cusor */
+// To end of next word
+ZMK_MACRO(jump_nxt, bindings=<&macro_tap &kp LA(RIGHT)>;)
+// To end of current word
+ZMK_MACRO(jump_end, bindings=<&macro_tap &kp LA(LEFT) &kp LA(RIGHT)>;)
+// To beg of next word
+ZMK_MACRO(jump_prv, bindings=<&macro_tap &kp LA(LEFT)>;)
+// To beg of current word
+ZMK_MACRO(jump_bgn, bindings=<&macro_tap &kp LA(RIGHT) &kp LA(LEFT)>;)
 /* ----------- */
 
-/* Previous Word */
-ZMK_MACRO(prev_word,
-    bindings=<&macro_press &kp LALT>,<&macro_tap &kp LEFT>,<&macro_release &kp LALT>;
-)
+/* Select Word */
+// Jumps to the beginning of the current word and selects to the right of the cursor.
+ZMK_MACRO(_sel_nxt, bindings=<&macro_tap &kp LS(LA(RIGHT))>;)
+ZMK_TRI_STATE(sel_nxt, bindings=<&jump_bgn>,<&_sel_nxt>,<&none>;)
+
+// Jump to the end of the current word and selects to the left of the cursor.
+ZMK_MACRO(_sel_prv, bindings=<&macro_tap &kp LS(LA(LEFT))>;)
+ZMK_TRI_STATE(sel_prv, bindings=<&jump_end>,<&_sel_prv>,<&none>;)
 /* ----------- */
 
 /* Screen Capture */
-ZMK_MACRO(scr_cap,
-    bindings=<&macro_press &kp LGUI &kp LSHFT>,<&macro_tap &kp N5>,<&macro_release &kp LSHFT &kp LGUI>;
-)
+// Open screen-capture manager.
+ZMK_MACRO(scr_cap, bindings=<&macro_tap &kp LG(LS(N5))>;)
+
+// Capture selected area and copy to clipboard.
+ZMK_MACRO(scr_shot, bindings=<&macro_tap &kp LG(LS(N4))>;)
 /* ----------- */
 
-/* Screenshot to Clipboard */
-ZMK_MACRO(scr_shot,
-    bindings=<&macro_press &kp LGUI &kp LSHFT>,<&macro_tap &kp N4>,<&macro_release &kp LSHFT &kp LGUI>;
-)
-/* ----------- */
+/* Tap Dances */
+ZMK_TAP_DANCE(num_dance, bindings=<&sl NUM>,<&num_word NUM>;)
+ZMK_TAP_DANCE(sys_dance, bindings=<&sl SYS>,<&tog SYS>;)
+ZMK_TAP_DANCE(copy_cut,  bindings=<&kp LG(C)>,<&kp LG(X)>;)
+/* ------------- */
